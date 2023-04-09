@@ -1,0 +1,42 @@
+.iphone{
+    display: flex;
+    width: 420px;
+    height: 850px;
+    border: 12px solid black;
+    border-radius: 40px;
+    box-shadow: 0px 20px 15px #33333335;
+    margin: auto;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.notch{
+    position: flex;
+    width: 180px;
+    height: 40px;
+    left: 155px;
+    z-index: 50;
+    background-color: #000000;
+    border-radius: 0px 0px 20px 20px; 
+}
+
+.camera{
+    position: flex;
+    margin: 8px 10%;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: .2rem solid #1e1f22;
+    background-color: #447bb5a6;
+}
+
+.speaker{
+    position: flex;
+    margin: -20px 22px;
+    width: 6.2rem;
+    height: .6rem;
+    background: #333333;
+    border-radius: 0px 0px 10px 10px;
+}
