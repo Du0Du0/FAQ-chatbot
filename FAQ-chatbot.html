@@ -14,18 +14,187 @@ email: dohyun911@hanmail.net
     <title>FAQ-chatbot</title>
 </head>
 <body>
-    <div class="iphone">
-        <div class="notch">
-            <div class="camera">
+<!-- 아이폰 테두리 -->
+<div class="iphone">
+    <!-- 챗봇 배경 -->
+    <div class="chat-box">
+        <!-- 아이폰 헤더 -->
+        <div class="iphone-header">
+            <!-- 아이폰 노치 -->
+            <div class="notch">
+                <!-- 아이폰 카메라 -->
+                <div class="camera">
+                </div>
+                <!-- 아이폰 스피커 -->
                 <div class="speaker">
+                </div>
+            </div>
 
-
-
-
+            <!-- 챗봇 헤더 -->
+            <div class="chat-header">
+                <!-- 챗봇 헤더 제목 -->
+                <h1 class="chat-title">상담 즉시 처리! Shoppi 상담봇</h1>
+                <!-- 챗봇 헤더 닫기 버튼 -->
+                <img src="닫기.png" class="close-chat-header">
+                <!-- 챗봇 전체 배경 -->
+                <div class="chat-body">
+                    <!-- 챗봇 메세지창 배경 -->
+                    <div class="chat-message bot-message">
+                        <!-- 인사말과 선택지 4개 버튼 -->
+                        <div id="greetingBot">
+                        <p >안녕하세요! 무엇을 도와드릴까요?</p>
+                        <div class="chat-buttons">
+                        <div><button class="chat-button" id="button1">안녕</button></div>
+                        <div><button class="chat-button" id="button2">하이</button></div>
+                        <div><button class="chat-button" id="button3">바이</button></div>
+                        <div><button class="chat-button" id="button4">오바이</button></div> 
+                        </div>
+                        <!-- 메세지 입력창 -->
+                        <input type="text" class="message-input" placeholder="메세지를 입력하세요">
+                        <!-- 전송버튼 -->
+                        <button class="send-button">Send</button>   
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+
+// DOM 요소 지정
+const button1 = document.querySelector('#button1');
+const button2 = document.querySelector('#button2');
+const button3 = document.querySelector('#button3');
+const button4 = document.querySelector('#button4');
+const chatBody = document.querySelector('.chat-body');
+const chatInput = document.querySelector('.message-input');
+const sendButton = document.querySelector('.send-button');
+const messages = document.querySelector('.messages');
+
+// 사용자가 해당 키워드가 들어간 버튼을 클릭 할 시
+// 사용자 메시지를 받아서 챗봇이 답변함
+function getBotResponse(message) {
+    if (message.includes('안녕')) {
+    return '안녕안녕! 좋은하루보내^~^';
+    } else if (message.includes('하이!')) {
+    return '하이! 반가워요.';
+    } else if (message.includes('바이!')) {
+    return '안녕히 가세요!';
+    } else if (message.includes('오바이!')) {
+    return '오바이 오바이!';
+    } else if (message.includes('메뉴')) {
+    return '저희 메뉴는 [JKC 소개] , [각 페이지 소개],  [멤버 소개],  [문의하기] 가 있습니다.';
+    } else if (message.includes('JKC 소개')) {
+    return 'JKC는 꺾이지 않는 코딩 프로젝트를 의미하며, 멤버로는 김도현, 임수진, 김경돈, 최진용, 장연서가 있습니다.';
+    }  else if (message.includes('각 페이지 소개')) {
+    return '저희 가게는 서울시 강남구에 위치하고 있습니다.';
+    } else {
+    return '죄송해요. 제가 이해하지 못했어요.';
+    }
+}
+
+// send 버튼 클릭 이벤트를 처리
+// send 버튼 이벤트리스너
+sendButton.addEventListener('click', () => {
+// 1.chatInput을 message 변수로 지정
+const message = chatInput.value;
+// input 입력값이 없으면 종료
+if (message.trim() === '') return; 
+//메세지 전송
+addMessage(message, 'user');
+
+// 2. 봇 대답 변수로 지정
+const botResponse = getBotResponse(message);
+//봇 대답 1초 뒤에 나타나는 함수
+setTimeout(() => {
+addMessage(botResponse, 'bot');
+}, 1000);
+//input메세지창 초기화
+chatInput.value = ''; // 입력값을 초기화
+});
+
+// 닫기 버튼을 누르면 닫히는 동시에 내용 초기화
+// TODO. #greetingBot만 남은 채로 나머지는 닫을 때 초기화해야하는데
+// 안되서 닫기 버튼 누를 시 페이치 초기화하는 방식으로 대체함. 고쳐야됨
+$('.close-chat-header').on('click', function () {
+$('.user-message').css('display', 'none');
+$('.bot-message').css('display', 'none');   //고쳐야됨
+$('#greetingBot').css('display', 'block');  //고쳐야됨
+location.reload(); // 새로고침 기능 추가
+});
+
+// 메시지를 추가하는 함수를 정의
+function addMessage(message, sender) {
+const messageElement = document.createElement('div');
+messageElement.classList.add('chat-message', sender === 'user' ? 'user-message' : 'bot-message');
+messageElement.innerHTML = `
+<p>${message}</p>
+`;
+chatBody.appendChild(messageElement);
+chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+//아이콘 버튼 누르면 아이콘 박스 나타남
+var count = 0;
+$('.btn-icon').on('click', function () {
+    count += 1;
+    if (count % 2 == 1) {
+    $('.iconbox').show();
+    } else {
+    $('.iconbox').hide();
+    }
+});
+
+// 버튼 클릭하면 선택한 버튼의 키워드가 user-chat에 뜸
+// 사용자가 무엇을 선택했는지 시각적으로 알게 해줌
+button1.addEventListener('click', () => {
+const message = '안녕';
+addMessage(message, 'user');
+const botResponse = getBotResponse(message);
+setTimeout(() => {
+addMessage(botResponse, 'bot');
+}, 1000);
+});
+
+button2.addEventListener('click', () => {
+const message = '하이!';
+addMessage(message, 'user');
+const botResponse = getBotResponse(message);
+setTimeout(() => {
+addMessage(botResponse, 'bot');
+}, 1000);
+});
+
+button3.addEventListener('click', () => {
+const message = '바이!';
+addMessage(message, 'user');
+const botResponse = getBotResponse(message);
+setTimeout(() => {
+addMessage(botResponse, 'bot');
+}, 1000);
+});
+
+button4.addEventListener('click', () => {
+const message = '오바이!';
+addMessage(message, 'user');
+const botResponse = getBotResponse(message);
+setTimeout(() => {
+addMessage(botResponse, 'bot');
+}, 1000);
+});
+
+// send버튼 enter버튼으로 전송하기
+var input = document.getElementsByClassName("message-input");
+chatInput.addEventListener("keyup", function () {
+if (event.keyCode === 13) {
+event.preventDefault();
+document.getElementsByClassName("send-button").click();
+sendMessage();
+}
+});
+
+</script>
 </body>
 </html>

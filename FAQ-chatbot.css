@@ -1,3 +1,12 @@
+body{
+    background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
 .iphone{
     display: flex;
     width: 420px;
@@ -9,34 +18,209 @@
     margin-top: 40px;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: row; 
 }
 
 .notch{
     position: flex;
     width: 180px;
     height: 40px;
-    left: 155px;
-    z-index: 50;
+    margin: -12px auto;
     background-color: #000000;
     border-radius: 0px 0px 20px 20px; 
 }
 
 .camera{
     position: flex;
-    margin: 8px 10%;
+    margin: 12px 10%;
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    border: .2rem solid #1e1f22;
-    background-color: #447bb5a6;
+    border: .1rem solid #1e1f22;
+    background-color: #b8b8b8a6;  
 }
 
 .speaker{
     position: flex;
-    margin: -20px 22px;
+    margin: -35px 40px;
     width: 6.2rem;
     height: .6rem;
     background: #333333;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;  
+}
+
+.chat-box{
+    background-color: rgb(255, 255, 255);
+    width: 420px;
+    height: 850px;
+    display: flex;
+    border-radius: 27px;
+    z-index: 1;
+    margin: 0;
+    justify-content: center;
+}
+
+.iphone-header {
+    position: flex;
+    width: 100%;
+    height: 120px;
+    top:0;
+    background-color: #ffffff;
+    border-radius: 27px 27px 0px 0px;
+}
+
+.chat-header{
+    position: absolute;
+    width: 420px;
+    height: 55px;
+    float: left;
+    justify-content: center;
+    margin-top: 120px;
+    background-color: #ee2e2e;  
+}
+
+.chat-title{
+    color: rgb(232, 232, 232);
+    text-align: center;
+    font-size: 18px;
+    margin: 18px auto;
+    font-weight: 500; 
+}
+
+.close-chat-header{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: 20px;
+    top: 15px;
+    margin-left: 455px;
+}
+
+.chat-body {
+    height: 500px;
+    height: 57vh;
+    padding: 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: auto;
+    background-color:#fcfcfc;
+}
+
+.chat-body::-webkit-scrollbar{
+    width: 18px;
+}
+
+.chat-body::-webkit-scrollbar-thumb{
+    width: 18px;
+    border-radius: 10px;
+    background-color: #c2c2c2;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+}
+
+.chat-body::-webkit-scrollbar-track{
+    background-color: #e6e6e6;
+}
+
+.bot-message {
+    background-color: #eeeeee;
+    padding: 0px 10px 0px 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    color: #000;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: #ee2e2e;
+    color: #fff;
+    padding: 0px 10px 0px 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    font-size: 16px;
+    align-self: flex-end;
+}
+
+.chat-buttons {
+    margin-top: 5px;
+    text-align: left;
+    margin-left: 13px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.chat-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #ee2e2e;
+    width: 200px;
+}
+
+.chat-button:hover {
+    background-color: #ee2e2e;
+    color: #fff;
+    font-size: 16px;
+}
+
+.message-input {
+    width: 280px;
+    height: 25px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 310px;
+    left: 20px;
+    position: absolute;
+    border: 1px solid #5d5d5d;
+    background-color: #ffffff;
+}
+
+.send-button{
+    position: absolute;
+    bottom: 120px;
+    height: 45px;
+    background-color: #5d5d5d;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    width: 75px;
+    right: 20px;
+    top: 640px;
+}
+
+.btn-icon{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    margin-top: 600px;
+    margin-left: 345px;  
+}
+
+
+.iconbox{
+    width: 380px;
+    height: 300px;
+    position: absolute;
+    margin-top: 290px;
+    margin-left: 3px;
+    background-color: rgb(255, 225, 225);
+    border-radius: 10px;
+    overflow: scroll;
+    display: none;
+    overflow-x: auto
+}
+    
+.massage-input img, .iconbox img{
+    width: 80px;
+    height: 80px;
 }
